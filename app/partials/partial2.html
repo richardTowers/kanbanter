@@ -1,0 +1,50 @@
+<div class="row">
+	<div id="backlog" class="span2 column">
+		<h4>Backlog</h4>
+		<div class="ticket" ng-repeat="issue in backlog">
+			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
+			<div class="subject">{{issue.subject}}</div>
+			<div class="assignee">{{issue.assigned_to.name}}</div>
+		</div>
+	</div>
+	<div id="inProgress" class="span2 column">
+		<h4>In Progress</h4>
+		<div class="ticket" ng-repeat="issue in inProgress">
+			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
+			<div class="subject">{{issue.subject}}</div>
+			<div class="assignee">{{issue.assigned_to.name}}</div>
+		</div>
+	</div>
+	<div id="review" class="span2 column">
+		<h4>Review</h4>
+		<div class="ticket" ng-repeat="issue in review">
+			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
+			<div class="subject">{{issue.subject}}</div>
+			<div class="assignee">{{issue.assigned_to.name}}</div>
+		</div>
+	</div>
+	<div id="reviewDone" class="span2 column">
+		<h4>Review Done</h4>
+		<div class="ticket" ng-repeat="issue in reviewDone">
+			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
+			<div class="subject">{{issue.subject}}</div>
+			<div class="assignee">{{issue.assigned_to.name}}</div>
+		</div>
+	</div>
+	<div id="inTesting" class="span2 column">
+		<h4>In Testing</h4>
+		<div class="ticket" ng-repeat="issue in inTesting">
+			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
+			<div class="subject">{{issue.subject}}</div>
+			<div class="assignee">{{issue.assigned_to.name}}</div>
+		</div>
+	</div>
+	<div id="complete" class="span2 column">
+		<h4>Complete</h4>
+		<div class="ticket" ng-repeat="issue in complete">
+			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
+			<div class="subject">{{issue.subject}}</div>
+			<div class="assignee">{{issue.assigned_to.name}}</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+/* app css stylesheet */
+
+.column {
+  background-color: #eee;
+  min-height: 500px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.ticket {
+  background-color: #ddd;
+  min-height: 50px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.drop-hover {
+  background-color: #BFEFFF;
+}
+
+.assignee {
+  font-size: small;
+  font-style: italic;
+}
+
+.subject {
+  font-family: monospace;
+}
