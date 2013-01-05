@@ -1,22 +1,14 @@
 .column {
-  background-color: #eee;
   min-height: 500px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
 }
 
 .ticket {
-  background-color: #ddd;
-  min-height: 50px;
+  border: solid 1px #ccc;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  margin: 10px;
-}
-
-.drop-hover {
-  background-color: #BFEFFF;
+  background-color: white;
+  margin-top: 5px;
 }
 
 .assignee {
@@ -26,4 +18,16 @@
 
 .subject {
   font-family: monospace;
+}
+
+.ui-draggable-dragging {
+  border-color: green;
+}
+
+.jqui-dnd-target-over {
+  border: solid 1px cyan;
+}
+
+.jqui-dnd-item-over {
+  border: solid 1px magenta;
 }

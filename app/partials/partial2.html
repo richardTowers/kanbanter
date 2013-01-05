@@ -1,47 +1,47 @@
 <div class="row">
-	<div id="backlog" class="span2 column">
+	<div id="backlog" class="span2 column" jqui-droppable>
 		<h4>Backlog</h4>
-		<div class="ticket" ng-repeat="issue in backlog">
+		<div class="ticket" ng-repeat="issue in backlog" jqui-draggable>
 			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
 			<div class="subject">{{issue.subject}}</div>
 			<div class="assignee">{{issue.assigned_to.name}}</div>
 		</div>
 	</div>
-	<div id="inProgress" class="span2 column">
+	<div id="inProgress" class="span2 column" jqui-droppable>
 		<h4>In Progress</h4>
-		<div class="ticket" ng-repeat="issue in inProgress">
+		<div class="ticket" ng-repeat="issue in inProgress"  jqui-draggable>
 			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
 			<div class="subject">{{issue.subject}}</div>
 			<div class="assignee">{{issue.assigned_to.name}}</div>
 		</div>
 	</div>
-	<div id="review" class="span2 column">
+	<div id="review" class="span2 column" jqui-droppable>
 		<h4>Review</h4>
-		<div class="ticket" ng-repeat="issue in review">
+		<div class="ticket" ng-repeat="issue in review" jqui-draggable>
 			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
 			<div class="subject">{{issue.subject}}</div>
 			<div class="assignee">{{issue.assigned_to.name}}</div>
 		</div>
 	</div>
-	<div id="reviewDone" class="span2 column">
+	<div id="reviewDone" class="span2 column" jqui-droppable>
 		<h4>Review Done</h4>
-		<div class="ticket" ng-repeat="issue in reviewDone">
+		<div class="ticket" ng-repeat="issue in reviewDone" jqui-draggable>
 			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
 			<div class="subject">{{issue.subject}}</div>
 			<div class="assignee">{{issue.assigned_to.name}}</div>
 		</div>
 	</div>
-	<div id="inTesting" class="span2 column">
+	<div id="inTesting" class="span2 column" jqui-droppable>
 		<h4>In Testing</h4>
-		<div class="ticket" ng-repeat="issue in inTesting">
+		<div class="ticket" ng-repeat="issue in inTesting" jqui-draggable>
 			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
 			<div class="subject">{{issue.subject}}</div>
 			<div class="assignee">{{issue.assigned_to.name}}</div>
 		</div>
 	</div>
-	<div id="complete" class="span2 column">
+	<div id="complete" class="span2 column" jqui-droppable>
 		<h4>Complete</h4>
-		<div class="ticket" ng-repeat="issue in complete">
+		<div class="ticket" ng-repeat="issue in complete" jqui-draggable>
 			<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
 			<div class="subject">{{issue.subject}}</div>
 			<div class="assignee">{{issue.assigned_to.name}}</div>
