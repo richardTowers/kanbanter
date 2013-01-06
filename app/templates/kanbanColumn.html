@@ -1,0 +1,8 @@
+<div class="span2 column" jqui-droppable>
+	<h4>{{title}}</h4>
+	<div class="ticket" ng-repeat="issue in issues" jqui-draggable>
+		<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
+		<div class="subject">{{issue.subject}}</div>
+		<div class="assignee">{{issue.assigned_to.name}}</div>
+	</div>
+</div>

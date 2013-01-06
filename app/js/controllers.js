@@ -3,12 +3,11 @@
 // Controllers
 
 
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
+function LoginController() {}
+LoginController.$inject = [];
 
 
-function MyCtrl2($scope, $http) {
-
+function KanbanController($scope, $http) {
 	$http.get('redmine/issues.json').success(function(data) {
 		var issues = data.issues;
 		// Backlog: Active and assigned to Dev Queue Unassigned:
@@ -27,7 +26,10 @@ function MyCtrl2($scope, $http) {
 		console.log(data);
 		window.alert('Oh No! Something went wrong!');
 	});
+}
+KanbanController.$inject = ['$scope', '$http'];
+
+function KanbanColumnController($scope) {
 
 }
-
-MyCtrl2.$inject = ['$scope', '$http'];
+KanbanColumnController.$inject = ['$scope'];

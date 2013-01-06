@@ -1,5 +1,13 @@
+body {
+  padding-top: 60px;
+}
+
 .column {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   min-height: 500px;
+  border: solid 1px #ccc;
 }
 
 .ticket {
@@ -20,14 +28,14 @@
   font-family: monospace;
 }
 
-.ui-draggable-dragging {
+.jqui-dnd-target-over {
   border-color: green;
 }
 
-.jqui-dnd-target-over {
-  border: solid 1px cyan;
+.jqui-dnd-item-over {
+  border-color: green;
 }
 
-.jqui-dnd-item-over {
-  border: solid 1px magenta;
+.controls button {
+  margin: 5px;
 }

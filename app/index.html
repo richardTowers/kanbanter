@@ -1,17 +1,22 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="kanbanter">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
+  <title>Kanbanter</title>
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/bootstrap-responsive.css">
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <li><a class="brand" href="#">Kanban</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <div class="container-fluid" ng-view></div>
 
