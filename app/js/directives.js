@@ -39,6 +39,7 @@ angular.module('kanbanter.directives', []).
 						$('.jqui-dnd-target-over').removeClass('jqui-dnd-target-over');
 						$('.jqui-dnd-item-over').removeClass('jqui-dnd-item-over');
 						var elementScope = ui.draggable.scope();
+						scope.handleDrop(elementScope, scope);
 					}
 				});
 			}

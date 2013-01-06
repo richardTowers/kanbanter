@@ -1,12 +1,22 @@
-<div class="row">
-	<kanban-column header="Backlog" issues="backlog"></kanban-column>
-	<kanban-column header="In Progress" issues="inProgress"></kanban-column>
-	<kanban-column header="Review" issues="review"></kanban-column>
-	<kanban-column header="Review Done" issues="reviewDone"></kanban-column>
-	<kanban-column header="In Testing" issues="inTesting"></kanban-column>
-	<kanban-column header="Complete" issues="complete"></kanban-column>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+    	<a class="brand" href="#">かんばん</a>
+		<ul class="nav pull-right">
+			<li><a>Logged in as {{username}}</a></li>
+			<li ng-click="logout()"><button class="btn btn-danger">Log out</button></li>
+		</ul>
+    </div>
+  </div>
 </div>
-<div class="controls">
-	<button class="btn btn-success pull-right" disabled>Save</button>
-	<button class="btn btn-danger pull-right" disabled>Revert</button>
+
+<div class="container-fluid">
+	<div class="row">
+		<kanban-column header="Backlog" issues="backlog"></kanban-column>
+		<kanban-column header="In Progress" issues="inProgress"></kanban-column>
+		<kanban-column header="Review" issues="review"></kanban-column>
+		<kanban-column header="Review Done" issues="reviewDone"></kanban-column>
+		<kanban-column header="In Testing" issues="inTesting"></kanban-column>
+		<kanban-column header="Complete" issues="complete"></kanban-column>
+	</div>
 </div>
