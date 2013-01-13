@@ -10,6 +10,7 @@ var statuses = {
 	resolved: 3,
 	closed: 5
 };
+var redmineBaseUrl = 'http://redmine.richard-towers.com/';
 
 
 function LoginController($scope, $http, $rootScope, $location) {
@@ -20,14 +21,14 @@ function LoginController($scope, $http, $rootScope, $location) {
 	if(window.localStorage) {
 		$scope.apiCode = window.localStorage.getItem('apiCode');
 		if($scope.apiCode != null) {
-			$http.get('redmine/users/current.json?key=' + $scope.apiCode).success(function (data) {
+			$http.get(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode).success(function (data) {
 				setData($scope.apiCode, data.user);
 				$location.path('/kanban');
 			});
 		}
 	}
 	$scope.login = function() {
-		$http.get('redmine/users/current.json?key=' + $scope.apiCode).success(function (data) {
+		$http.get(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode).success(function (data) {
 			if(window.localStorage) {
 				window.localStorage.setItem('apiCode', $scope.apiCode);
 			}
@@ -45,7 +46,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		return;
 	}
 	var key = $rootScope.apiCode;
-	$http.get('redmine/users/current.json?key=' + key).success(function (data) {
+	$http.get(redmineBaseUrl + 'users/current.json?key=' + key).success(function (data) {
 		$rootScope.apiCode = key;
 		$rootScope.user = data.user;
 	});
@@ -55,7 +56,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		return;
 	};
 	$scope.username = $rootScope.user.firstname + ' ' + $rootScope.user.lastname;
-	$http.get('redmine/issues.json?status_id=*&key='+key).success(function(data) {
+	$http.get(redmineBaseUrl + 'issues.json?status_id=*&key='+key).success(function(data) {
 		var issues = data.issues;
 		// Backlog: Active and assigned to Dev Queue Unassigned:
 		$scope.backlog = _.filter(issues, function(x) {
@@ -135,7 +136,7 @@ function KanbanColumnController($scope, $http, $rootScope) {
 			var update = { issue : { status_id: statusId } };
 			if(assignedTo !== null) { update.issue.assigned_to_id = assignedTo; }
 
-			$http.put('redmine/issues/' + ticketScope.issue.id + '.json?key='+$rootScope.apiCode, update).
+			$http.put(redmineBaseUrl + 'issues/' + ticketScope.issue.id + '.json?key='+$rootScope.apiCode, update).
 				error(function (data) {
 					console.log(data);
 					window.alert('Oh No! Something went wrong!');
