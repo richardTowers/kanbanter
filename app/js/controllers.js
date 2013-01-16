@@ -58,12 +58,12 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		var review = 7;
 		var resolved = 3;
 		var closed = 5;
-		$scope.backlog = function (ticket) { return ticket.assigned_to.id         === unassigned && ticket.status.id === active; }
-		$scope.inProgress = function (ticket) { return ticket.assigned_to.id      !== unassigned && ticket.status.id === active; }
+		$scope.backlog = function (ticket)         { return ticket.assigned_to.id === unassigned && ticket.status.id === active; }
+		$scope.inProgress = function (ticket)      { return ticket.assigned_to.id !== unassigned && ticket.status.id === active; }
 		$scope.developmentDone = function (ticket) { return ticket.assigned_to.id === unassigned && ticket.status.id === review; }
-		$scope.review = function (ticket) { return ticket.assigned_to.id          !== unassigned && ticket.status.id === review; }
-		$scope.reviewDone = function (ticket) { return ticket.assigned_to.id      === unassigned && ticket.status.id === resolved; }
-		$scope.inTesting = function (ticket) { return ticket.assigned_to.id       !== unassigned && ticket.status.id === resolved; }
+		$scope.review = function (ticket)          { return ticket.assigned_to.id !== unassigned && ticket.status.id === review; }
+		$scope.reviewDone = function (ticket)      { return ticket.assigned_to.id === unassigned && ticket.status.id === resolved; }
+		$scope.inTesting = function (ticket)       { return ticket.assigned_to.id !== unassigned && ticket.status.id === resolved; }
 	})();
 
 	$scope.logout = handleLogout;
