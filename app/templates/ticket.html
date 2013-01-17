@@ -1,5 +1,5 @@
-<div class="ticket" jqui-draggable>
-	<div><a href="http://redmine.acturis.com/issues/{{issue.id}}">#{{issue.id}}</a></div>
-	<div class="subject">{{issue.subject}}</div>
-	<div class="assignee">{{issue.assigned_to.name}}</div>
+<div class="ticket unit{{issue.custom_fields[7].value}}" jqui-draggable>
+		<p class="issueNumber"><span class="estimatedHours">{{issue.estimated_hours-Number(issue.custom_fields[4].value)}} <abbr title="hours">hrs</abbr></span><a href="https://redmine.acturis.com/issues/{{issue.id}}" target="_blank">#{{issue.id}}</a> </p>		<p class="subject">{{issue.subject}}</p>
+		<p class="assignee">{{issue.assigned_to.name}}</p>
+	<div class="ticketProgressBarContainer"><div class="ticketProgressBar" style="width:{{issue.done_ratio}}%;"></div></div>
 </div>
