@@ -1,0 +1,13 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+		<a class="brand" href="#">かんばん</a>
+			<div ng-class="{ hide : !user || !user.name }">
+				<ul class="nav pull-right">
+					<li><a>Logged in as {{user.name}}</a></li>
+					<li ng-click="logout()"><button class="btn btn-danger">Log out</button></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

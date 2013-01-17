@@ -1,24 +1,13 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <ul class="nav">
-        <li><a class="brand" href="#">かんばん</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<navbar />
 
 <div class="container-fluid">
   <p>To log in, simply provide your Redmine API key in the field below:</p>
-  <fieldset class="control-group input-prepend input-append">
+  <form class="control-group input-prepend input-append" ng-submit="login()">
     <span class="add-on"><i class="icon-lock"></i></span>
-    <input type="text" class="span11" placeholder="Your Redmine API Key" ng-model="apiCode" required>
-    <a class="btn btn-primary" ng-click="login()">Go &raquo;</a>
-  </fieldset>
-  <div id="loginErrorGroup" class="control-group error">
-    <div class="help-block hide">Sorry, it doesn't look like that's a valid API key.</div>
-    <div class="help-block hide">API keys are 40 digit hexadecimal numbers. For example: <var>341a3376cac19972cd51d3e47c91e9aefb73c167</var></div>
-  </div>
+    <input type="text" class="span11" placeholder="Your Redmine API Key" ng-model="apiCode" pattern="[0-9a-fA-f]{40}" required>
+    <button class="btn btn-primary" type="submit">Go &raquo;</button>
+    <div ng-show="apiCode.$error.required">Required</div>
+  </form>
   <figure class="pull-right">
     <img src="img/redmineApiKey.png" alt="Screenshot of the redmine API screen." class="img-polaroid">
     <figcaption>The API access key screen.</figcaption>

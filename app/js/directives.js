@@ -1,16 +1,21 @@
 'use strict';
 
 angular.module('kanbanter.directives', []).
-	directive('kanbanColumn', function () {
+	directive('navbar', function () {
 		return {
 			restrict: 'E',
-			templateUrl: 'templates/kanbanColumn.html',
-			replace: true,
-			scope: {
-				title: '@header',
-				issues: '=issues'
-			},
-			controller: KanbanColumnController
+			templateUrl: 'templates/navbar.html',
+			replace: true
+		};
+	}).directive('kanbanTicket', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'templates/ticket.html',
+			replace: true
+		};
+	}).directive('redmineApi', function () {
+		return {
+			restrict: 'A'
 		};
 	}).directive('jquiDraggable', function () {
 		return {
