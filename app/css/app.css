@@ -122,15 +122,14 @@ div.ticketProgressBar {
 }
 
 .jqui-dnd-target-over {
-  border-color: bbb;
-  background-color: #eee;
+  background-color: #ccc;
 }
 
-
+.jqui-dnd-target-over h4 {
+  background-color: #aaa;
+}
 
 .jqui-dnd-item-over {
-  border-color: #bbb;
-  background-color: #eee;
 }
 
 

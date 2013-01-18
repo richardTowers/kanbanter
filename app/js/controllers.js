@@ -65,6 +65,18 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		$scope.reviewDone = function (ticket)      { return ticket.assigned_to.id === unassigned && ticket.status.id === resolved; }
 		$scope.inTesting = function (ticket)       { return ticket.assigned_to.id !== unassigned && ticket.status.id === resolved; }
 	})();
+	
+	// Return ticket custom field value
+	$scope.getTicketCustomField = function (ticket, fieldId) {
+		
+		for (var i = 0; i < ticket.custom_fields.length; i++) {
+			if(ticket.custom_fields[i].id==fieldId) return ticket.custom_fields[i].value;
+		}
+		
+		// Custom field not found
+		return null;
+		
+	}
 
 	$scope.logout = handleLogout;
 }
