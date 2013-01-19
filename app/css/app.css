@@ -1,22 +1,112 @@
+h1 {
+  margin-bottom: 30px;
+}
+
 body {
   padding-top: 60px;
+  font: 12px arial;
+}
+
+.column h4 {
+  font: 24px arial;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 0;
+  background: #ccc;
+  white-space:nowrap;
+  border-bottom: 1px solid #fff;
 }
 
 .column {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  min-height: 500px;
-  border: solid 1px #ccc;
+  background: #eee;
+  min-height: 600px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+div.clear {
+  clear: both;
 }
 
 .ticket {
-  border: solid 1px #ccc;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background-color: white;
-  margin-top: 5px;
+  background: #F0D878;
+  color: #fff;
+  padding: 5px;
+  margin: 20px -8px 20px 8px;
+  border-bottom: 1px solid #CBB768;
+}
+
+.ticket p.issueNumber {
+  background: #F4E39D;
+  padding: 3px 5px 3px 5px;
+  margin-left: -5px;
+  border-bottom: 1px solid #CBB768;
+  margin-right: -8px;
+  position:relative;
+}
+
+.ticket span.estimatedHours {
+  float: right;
+  text-transform: uppercase;
+  font-size: 9px;
+}
+
+span.estimatedHours abbr {
+  border: none;
+}
+
+.ticket p.issueNumber a {
+  display: block;
+  color: #fff;
+  font-size: 24px;
+}
+
+.ticket p.issueNumber a:hover {
+  text-decoration: none;
+}
+
+div.ticketProgressBarContainer {
+  background: #596348;
+  height: 4px;
+}
+
+div.ticketProgressBar {
+  background: #A1BEE6;
+  height: 3px;
+  border-bottom: 1px solid #5CB2C3;
+}
+
+.ticket.unitScotland {
+  background-color: #5E98B6;
+  border-bottom-color: #4E788E;
+}
+
+
+.ticket.unitScotland p.issueNumber {
+  background-color: #A3C4D5;
+  border-bottom-color: #4E788E;
+}
+
+.ticket.unitEngland {
+  background-color: #D5778E;
+  border-bottom-color: #B4687A;
+}
+
+
+.ticket.unitEngland p.issueNumber {
+  background-color: #EDC5CF;
+  border-bottom-color: #B4687A;
+}
+
+.ticket.unitIreland {
+  background-color: #B9D48B;
+  border-bottom-color: #ABC481;
+}
+
+
+.ticket.unitIreland p.issueNumber {
+  background-color: #CCE0AB;
+  border-bottom-color: #ABC481;
 }
 
 .assignee {
@@ -24,17 +114,25 @@ body {
   font-style: italic;
 }
 
+
+
 .subject {
-  font-family: monospace;
+  font-size: 12px;
+  overflow: hidden;
 }
 
 .jqui-dnd-target-over {
-  border-color: green;
+  background-color: #ccc;
+}
+
+.jqui-dnd-target-over h4 {
+  background-color: #aaa;
 }
 
 .jqui-dnd-item-over {
-  border-color: green;
 }
+
+
 
 .controls button {
   margin: 5px;
