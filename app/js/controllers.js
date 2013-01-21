@@ -70,7 +70,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
 	$scope.getTicketCustomField = function (ticket, fieldId) {
 		
 		for (var i = 0; i < ticket.custom_fields.length; i++) {
-			if(ticket.custom_fields[i].id==fieldId) return ticket.custom_fields[i].value;
+			if(ticket.custom_fields[i].id===Number(fieldId)) { return ticket.custom_fields[i].value; }
 		}
 		
 		// Custom field not found
