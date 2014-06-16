@@ -17,7 +17,6 @@ function LoginController($scope, $http, $rootScope, $location) {
 	$scope.login = function login () {
 
         jQuery.getJSON(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode + "&callback=?", function(data){
-            alert("ok!");
             handleSuccessfulLogin(data.user);
         });
 
@@ -29,6 +28,7 @@ function LoginController($scope, $http, $rootScope, $location) {
 		return;
 	}
 }
+
 LoginController.$inject = ['$scope', '$http', '$rootScope', '$location'];
 
 function KanbanController($scope, $http, $rootScope, $location) {
@@ -49,8 +49,11 @@ function KanbanController($scope, $http, $rootScope, $location) {
 
 	// Try and use the user's apiCode to get the issues:
     jQuery.getJSON(redmineBaseUrl + 'issues.json?status_id=*&key=' + $rootScope.user.apiCode + "&callback=?",
-        function (data) { $scope.issues = data.issues;
-    });
+        function (data) {
+            $scope.issues = data.issues;
+            $scope.$apply();
+        }
+    );
 
 	// Set up filters:
 	(function () {
@@ -72,7 +75,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
 	$scope.getTicketCustomField = function (ticket, fieldId) {
 		
 		for (var i = 0; i < ticket.custom_fields.length; i++) {
-			if(ticket.custom_fields[i].id===Number(fieldId)) { return ticket.custom_fields[i].value; }
+			if(ticket.custom_fields[i].id === Number(fieldId)) { return ticket.custom_fields[i].value; }
 		}
 		
 		// Custom field not found
