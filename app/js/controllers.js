@@ -16,7 +16,7 @@ function LoginController($scope, $http, $rootScope, $location) {
 
 	$scope.login = function login () {
 
-        jQuery.getJSON(redmineBaseUrl + 'users/current.json?callback=JSON_CALLBACK&key=' + $scope.apiCode, function(data){
+        jQuery.getJSON(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode + "&callback=?", function(data){
             alert("ok!");
             handleSuccessfulLogin(data.user);
         });
