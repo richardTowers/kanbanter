@@ -19,6 +19,11 @@ function LoginController($scope, $http, $rootScope, $location) {
 		$http.jsonp(redmineBaseUrl + 'users/current.json?callback=JSON_CALLBACK&key=' + $scope.apiCode)
 			.success(function (data) { handleSuccessfulLogin(data.user); })
 			.error(function () { alert('Oops! Something went wrong.'); });
+
+        var c = $window.angular.callbacks.counter.toString(36);
+        window['angularcallbacks_' + c] = function (data) {
+            window.angular.callbacks['_' + c](data);
+        };
 	};
 
 	// We might have to auto-login
