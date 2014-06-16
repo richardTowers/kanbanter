@@ -60,8 +60,8 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		var unassigned = 9;
 		var currentUser = $rootScope.user.id;
 		var active = 1;
-		var review = 7;
-		var resolved = 3;
+		var review = 10;
+		var resolved = 17;
 		var closed = 5;
 		$scope.backlog = function (ticket)         { return ticket.assigned_to.id === unassigned && ticket.status.id === active; }
 		$scope.inProgress = function (ticket)      { return ticket.assigned_to.id !== unassigned && ticket.status.id === active; }
