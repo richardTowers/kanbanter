@@ -48,8 +48,9 @@ function KanbanController($scope, $http, $rootScope, $location) {
 	}
 
 	// Try and use the user's apiCode to get the issues:
-    jQuery.getJSON(redmineBaseUrl + 'issues.json?status_id=*&key=' + $rootScope.user.apiCode + "&callback=?")
-		.done(function (data) { $scope.issues = data.issues; });
+    jQuery.getJSON(redmineBaseUrl + 'issues.json?status_id=*&key=' + $rootScope.user.apiCode + "&callback=?",
+        function (data) { $scope.issues = data.issues;
+    });
 
 	// Set up filters:
 	(function () {
