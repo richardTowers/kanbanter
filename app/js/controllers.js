@@ -16,7 +16,7 @@ function LoginController($scope, $http, $rootScope, $location) {
 
 	$scope.login = function login () {
 		// Make a get with the api code in the box to see if it's correct:
-		$http.get(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode)
+		$http({method: 'GET', url: redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode})
 			.success(function (data) { handleSuccessfulLogin(data.user); })
 			.error(function () { alert('Oops! Something went wrong.'); });
 	};
