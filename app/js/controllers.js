@@ -15,15 +15,12 @@ function LoginController($scope, $http, $rootScope, $location) {
 	};
 
 	$scope.login = function login () {
-		// Make a get with the api code in the box to see if it's correct:
-		$http.jsonp(redmineBaseUrl + 'users/current.json?callback=JSON_CALLBACK&key=' + $scope.apiCode)
-			.success(function (data) { handleSuccessfulLogin(data.user); })
-			.error(function () { alert('Oops! Something went wrong.'); });
 
-        var c = $window.angular.callbacks.counter.toString(36);
-        window['angularcallbacks_' + c] = function (data) {
-            window.angular.callbacks['_' + c](data);
-        };
+        jQuery.getJSON(redmineBaseUrl + 'users/current.json?callback=JSON_CALLBACK&key=' + $scope.apiCode, function(data){
+            alert("ok!");
+            handleSuccessfulLogin(data.user);
+        });
+
 	};
 
 	// We might have to auto-login
