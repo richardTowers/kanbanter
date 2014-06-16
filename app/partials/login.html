@@ -1,10 +1,10 @@
 <navbar />
 
 <div class="container-fluid">
-  <p>To log in, simply provide your Redmine API key in the field below:</p>
+  <p>Для логина введите ваш Redmine API Key:</p>
   <form class="control-group input-prepend input-append" ng-submit="login()">
     <span class="add-on"><i class="icon-lock"></i></span>
-    <input type="text" class="span11" placeholder="Your Redmine API Key" ng-model="apiCode" pattern="[0-9a-fA-f]{40}" required>
+    <input type="text" class="span11" placeholder="Ваш Redmine API Key" ng-model="apiCode" pattern="[0-9a-fA-f]{40}" required>
     <button class="btn btn-primary" type="submit">Go &raquo;</button>
     <div ng-show="apiCode.$error.required">Required</div>
   </form>
@@ -12,10 +12,10 @@
     <img src="img/redmineApiKey.png" alt="Screenshot of the redmine API screen." class="img-polaroid">
     <figcaption>The API access key screen.</figcaption>
   </figure>
-  <h4>Finding your API access key:</h4>
+  <h4>Где найти Redmine API Key:</h4>
   <ul>
-    <li>Log in to redmine with your usual credentials.</li>
-    <li>Go to: <a href="http://redmine.acturis.com/my/account">redmine.acturis.com/my/account</a></li>
-    <li>In the right hand column, under API access key, click show.</li>
+    <li>Залогиньтесь в трекере.</li>
+    <li>Зайдите на: <a href="https://tasks.verumnets.ru/my/account">https://tasks.verumnets.ru/my/account</a></li>
+    <li>В правой колонке нажмите "показать".</li>
   </ul>
 </div>
