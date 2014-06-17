@@ -3,27 +3,27 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="column span2" jqui-droppable>
-			<h4>Backlog</h4>
+			<h4>Подготовка</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: backlog"/>
 		</div>
 		<div class="column span2" jqui-droppable>
-			<h4>In Progress</h4>
+			<h4>Неназначенные</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: inProgress"/>
 		</div>
 		<div class="column span2" jqui-droppable>
-			<h4>Dev. Done</h4>
+			<h4>Следующие</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: developmentDone"/>
 		</div>
 		<div class="column span2" jqui-droppable>
-			<h4>Review</h4>
+			<h4>В разработке</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: review"/>
 		</div>
 		<div class="column span2" jqui-droppable>
-			<h4>Review Done</h4>
+			<h4>Тестируются</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: reviewDone"/>
 		</div>
 		<div class="column span2" jqui-droppable>
-			<h4>In Testing</h4>
+			<h4>Ожидают анализа</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: inTesting"/>
 		</div>
 	</div>

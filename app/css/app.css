@@ -22,6 +22,7 @@ body {
   min-height: 600px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
+  width:208px;
 }
 
 div.clear {
