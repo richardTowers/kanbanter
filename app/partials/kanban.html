@@ -11,7 +11,7 @@
 			<kanban-ticket ng-repeat="issue in issues | filter: inProgress"/>
 		</div>
 		<div class="column span2" jqui-droppable>
-			<h4>Следующие</h4>
+			<h4>Назначенные</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: developmentDone"/>
 		</div>
 		<div class="column span2" jqui-droppable>

@@ -57,18 +57,19 @@ function KanbanController($scope, $http, $rootScope, $location) {
 
 	// Set up filters:
 	(function () {
-		var unassigned = 9;
+		var backlog = 4;
 		var currentUser = $rootScope.user.id;
 		var active = 1;
-		var review = 10;
-		var resolved = 17;
-		var closed = 5;
-		$scope.backlog = function (ticket)         { return ticket.assigned_to.id === unassigned && ticket.status.id === active; }
-		$scope.inProgress = function (ticket)      { return ticket.assigned_to.id !== unassigned && ticket.status.id === active; }
-		$scope.developmentDone = function (ticket) { return ticket.assigned_to.id === unassigned && ticket.status.id === review; }
-		$scope.review = function (ticket)          { return ticket.assigned_to.id !== unassigned && ticket.status.id === review; }
-		$scope.reviewDone = function (ticket)      { return ticket.assigned_to.id === unassigned && ticket.status.id === resolved; }
-		$scope.inTesting = function (ticket)       { return ticket.assigned_to.id !== unassigned && ticket.status.id === resolved; }
+		var inProgress = 2;
+		var readyForTesting = 17;
+		var testing = 18;
+		var ready = 10;
+		$scope.backlog = function (ticket)         { return !ticket.assigned_to.id && ticket.status.id === backlog; }
+		$scope.inProgress = function (ticket)      { return !ticket.assigned_to.id && ticket.status.id === active; }
+		$scope.developmentDone = function (ticket) { return ticket.assigned_to.id  && ticket.status.id === active; }
+		$scope.review = function (ticket)          { return ticket.assigned_to.id  && ticket.status.id === inProgress; }
+		$scope.reviewDone = function (ticket)      { return ticket.status.id == readyForTesting || ticket.status.id == testing; }
+		$scope.inTesting = function (ticket)       { return ticket.status.id == ready; }
 	})();
 	
 	// Return ticket custom field value
