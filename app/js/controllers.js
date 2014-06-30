@@ -74,7 +74,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
                                                                 && (ticket.status.id === active || ticket.status.id === 11) }
         //Назначенные и в новые
 		$scope.developmentDone = function (ticket) { return ticket.assigned_to && ticket.assigned_to.id
-                                                                            && ticket.status.id === active; }
+                                                                            && (ticket.status.id === active || ticket.status.id === 11) }
 
         //Назначенные и в работе
 		$scope.review = function (ticket)          { return ticket.assigned_to && ticket.assigned_to.id
