@@ -32,7 +32,11 @@ body {
     /* Retina-specific stuff here */
 
     .column {
-        width:200px;
+        width:190px;
+    }
+
+    .column .h4 {
+        font-size: 19px;
     }
 }
 
