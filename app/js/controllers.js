@@ -99,6 +99,11 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		
 	}
 
+
+    $scope.handleDrop = function(elementScope, scope) {
+        console.log(elementScope, scope);
+    };
+
 	$scope.logout = handleLogout;
 }
 LoginController.$inject = ['$scope', '$http', '$rootScope', '$location'];
