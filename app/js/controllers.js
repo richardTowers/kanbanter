@@ -69,9 +69,9 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		$scope.backlog = function (ticket)         { return (!ticket.assigned_to || !ticket.assigned_to.id)
                                                         && ticket.status.id === backlog; }
 
-        //Неназначенные и новые
+        //Неназначенные и новые или отложено
         $scope.inProgress = function (ticket)      { return (!ticket.assigned_to || !ticket.assigned_to.id)
-                                                                && ticket.status.id === active; }
+                                                                && (ticket.status.id === active || ticket.status.id === 11) }
         //Назначенные и в новые
 		$scope.developmentDone = function (ticket) { return ticket.assigned_to && ticket.assigned_to.id
                                                                             && ticket.status.id === active; }
