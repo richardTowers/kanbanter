@@ -66,16 +66,19 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		var ready = 10;
 
         //Неназначенные и обратная связь
-		$scope.backlog = function (ticket)         { return !ticket.assigned_to.id && ticket.status.id === backlog; }
+		$scope.backlog = function (ticket)         { return (!ticket.assigned_to || !ticket.assigned_to.id)
+                                                        && ticket.status.id === backlog; }
 
         //Неназначенные и новые
-        $scope.inProgress = function (ticket)      { return !ticket.assigned_to.id && ticket.status.id === active; }
-
+        $scope.inProgress = function (ticket)      { return (!ticket.assigned_to || !ticket.assigned_to.id)
+                                                                && ticket.status.id === active; }
         //Назначенные и в новые
-		$scope.developmentDone = function (ticket) { return ticket.assigned_to.id  && ticket.status.id === active; }
+		$scope.developmentDone = function (ticket) { return ticket.assigned_to && ticket.assigned_to.id
+                                                                            && ticket.status.id === active; }
 
         //Назначенные и в работе
-		$scope.review = function (ticket)          { return ticket.assigned_to.id  && ticket.status.id === inProgress; }
+		$scope.review = function (ticket)          { return ticket.assigned_to && ticket.assigned_to.id
+                                                                            && ticket.status.id === inProgress; }
 
         //Тестируются
 		$scope.reviewDone = function (ticket)      { return ticket.status.id == readyForTesting || ticket.status.id == testing; }
