@@ -48,7 +48,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
 	}
 
 	// Try and use the user's apiCode to get the issues:
-    jQuery.getJSON(redmineBaseUrl + 'issues.json?sort=created_on:desc&project_id=29&status_id=*&key=' + $rootScope.user.apiCode + "&callback=?",
+    jQuery.getJSON(redmineBaseUrl + 'issues.json?sort=created_on:desc&limit=100&project_id=29&status_id=*&key=' + $rootScope.user.apiCode + "&callback=?",
         function (data) {
             $scope.issues = data.issues;
             $scope.$apply();
@@ -64,11 +64,23 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		var readyForTesting = 17;
 		var testing = 18;
 		var ready = 10;
+
+        //Неназначенные и обратная связь
 		$scope.backlog = function (ticket)         { return !ticket.assigned_to.id && ticket.status.id === backlog; }
-		$scope.inProgress = function (ticket)      { return !ticket.assigned_to.id && ticket.status.id === active; }
+
+        //Неназначенные и новые
+        $scope.inProgress = function (ticket)      { return !ticket.assigned_to.id && ticket.status.id === active; }
+
+        //Назначенные и в новые
 		$scope.developmentDone = function (ticket) { return ticket.assigned_to.id  && ticket.status.id === active; }
+
+        //Назначенные и в работе
 		$scope.review = function (ticket)          { return ticket.assigned_to.id  && ticket.status.id === inProgress; }
+
+        //Тестируются
 		$scope.reviewDone = function (ticket)      { return ticket.status.id == readyForTesting || ticket.status.id == testing; }
+
+        //Выложенны
 		$scope.inTesting = function (ticket)       { return ticket.status.id == ready; }
 	})();
 	
