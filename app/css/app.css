@@ -177,8 +177,11 @@ div.ticketProgressBar {
 }
 
 .unit13, .unit13 p.issueNumber {
-    background: #483D8B;
-    border-bottom-color:#312866;
+    background: #6a9fd0;
+    border-bottom-color:#113b62;
 }
 
-
+.unit17, .unit17 p.issueNumber {
+    backgroud: #e1818b;
+    border-bottom-color:#ba737a;
+}
