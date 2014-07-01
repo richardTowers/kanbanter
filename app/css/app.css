@@ -106,7 +106,7 @@ div.ticketProgressBar {
   border-bottom: 1px solid #5CB2C3;
 }
 
-div.ticketProgressBar.ratio0 {
+div.ticketProgressBarContainer.ratio0 {
     display: none;
 }
 
