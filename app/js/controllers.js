@@ -73,8 +73,11 @@ function KanbanController($scope, $http, $rootScope, $location) {
         $scope.inProgress = function (ticket)      { return (!ticket.assigned_to || !ticket.assigned_to.id)
                                                                 && (ticket.status.id === active || ticket.status.id === 11) }
         //Назначенные и в новые
-		$scope.developmentDone = function (ticket) { return ticket.assigned_to && ticket.assigned_to.id
-                                                                            && (ticket.status.id === active || ticket.status.id === 11) }
+		$scope.developmentDone = function (ticket) {
+            return ticket.assigned_to && ticket.assigned_to.id
+                 && (!ticket.category || ticket.category != 16)
+                 && (ticket.status.id === active || ticket.status.id === 11)
+        }
 
         //Назначенные и в работе
 		$scope.review = function (ticket)          { return ticket.assigned_to && ticket.assigned_to.id
