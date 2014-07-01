@@ -6,7 +6,7 @@
 		<p class="subject">{{issue.subject}}</p>
 	<div class="ticketProgressBarContainer">
         <!--<div class="ticketProgressBar" style="width:{{issue.doe_ratio}}%;"></div>-->
-        <div ng-if="issue.ratio > 0">
+        <div ng-if="issue.ratio">
             <div class="ticketProgressBar" style="width:{{issue.ratio}}%;"></div>
         </div>
     </div>
