@@ -26,7 +26,7 @@ body {
   margin-left: 20px;
 }
 
-.small-column {
+/*.small-column {
     width:150px
 }
 
@@ -36,7 +36,7 @@ body {
 
 .big-column {
     font-size: ;
-}
+}*/
 
 @media
 (-webkit-min-device-pixel-ratio: 2),
@@ -149,6 +149,7 @@ div.ticketProgressBar {
 .subject {
   font-size: 12px;
   overflow: hidden;
+  max-height: 43px;
 }
 
 .jqui-dnd-target-over {
