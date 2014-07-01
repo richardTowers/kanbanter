@@ -163,7 +163,13 @@ div.ticketProgressBar {
 .jqui-dnd-item-over {
 }
 
+.fullscreen {
+    padding: 0;
+}
 
+.fullscreen .navbar {
+    display: none;
+}
 
 .controls button {
   margin: 5px;

@@ -33,6 +33,10 @@ LoginController.$inject = ['$scope', '$http', '$rootScope', '$location'];
 
 function KanbanController($scope, $http, $rootScope, $location) {
 
+    document.addEventListener("webkitfullscreenchange", function () {
+        $("body").toggleClass("fullscreen");
+    }, false);
+
 	var handleLogout = function handleLogout () {
 		$rootScope.user = undefined;
 		if(window.localStorage) {
