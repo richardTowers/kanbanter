@@ -2,11 +2,11 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="column span2" jqui-droppable>
+		<div class="column span2 small-column" jqui-droppable>
 			<h4>Неприоритетные</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: noDev"/>
 		</div>
-		<div class="column span2" jqui-droppable>
+		<div class="column span2 small-column" jqui-droppable>
 			<h4>Дизайн</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: design"/>
 		</div>
@@ -14,11 +14,11 @@
 			<h4>Назначенные</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: developmentReady"/>
 		</div>
-		<div class="column span2" jqui-droppable>
+		<div class="column span2 big-column" jqui-droppable>
 			<h4>В разработке</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: inProgress"/>
 		</div>
-		<div class="column span2" jqui-droppable>
+		<div class="column span2 small-column" jqui-droppable>
 			<h4>Тестируются</h4>
 			<kanban-ticket ng-repeat="issue in issues | filter: inTesting"/>
 		</div>

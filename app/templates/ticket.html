@@ -1,6 +1,8 @@
 <div class="ticket unit{{getTicketCustomField(issue,'1')}}" jqui-draggable>
-		<p class="issueNumber"><span class="estimatedHours">{{issue.estimated_hours-Number(getTicketCustomField(issue,'2'))}} <abbr title="hours">hrs</abbr></span><a href="https://tasks.verumnets.ru/issues/{{issue.id}}" target="_blank">#{{issue.id}}</a></p>
+		<p class="issueNumber">
+            <span class="estimatedHours">{{issue.assigned_to.name}</span>
+            <a href="https://tasks.verumnets.ru/issues/{{issue.id}}" target="_blank">#{{issue.id}}</a>
+        </p>
 		<p class="subject">{{issue.subject}}</p>
-		<p class="assignee">{{issue.assigned_to.name}}</p>
 	<div class="ticketProgressBarContainer"><div class="ticketProgressBar" style="width:{{issue.done_ratio}}%;"></div></div>
 </div>

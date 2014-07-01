@@ -26,6 +26,18 @@ body {
   margin-left: 20px;
 }
 
+.small-column {
+    width:150px
+}
+
+.small-column h4 {
+    font-size: 20px;
+}
+
+.big-column {
+    font-size: ;
+}
+
 @media
 (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
@@ -76,7 +88,7 @@ span.estimatedHours abbr {
 .ticket p.issueNumber a {
   display: block;
   color: #fff;
-  font-size: 24px;
+  font-size: 14px;
 }
 
 .ticket p.issueNumber a:hover {
