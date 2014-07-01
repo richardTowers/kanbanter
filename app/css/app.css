@@ -156,14 +156,14 @@ div.ticketProgressBar {
   margin: 5px;
 }
 
-.unit12, .uni12 .issueNumber {
+.unit12, .uni12 p.issueNumber {
     background: #efd4ab;
 }
 
-.unit18, .unit18 .issueNumber {
+.unit18, .unit18 p.issueNumber {
     background:#70c17a;
 }
 
-.unit14, .unit14 .issueNumber {
+.unit14, .unit14 p.issueNumber {
     background: #6a9fd0;
 }
