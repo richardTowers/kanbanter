@@ -106,6 +106,10 @@ div.ticketProgressBar {
   border-bottom: 1px solid #5CB2C3;
 }
 
+div.ticketProgressBar.ratio0 {
+    display: none;
+}
+
 .ticket.unitScotland {
   background-color: #5E98B6;
   border-bottom-color: #4E788E;
