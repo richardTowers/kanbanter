@@ -106,9 +106,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
 	
 	// Return ticket custom field value
 	$scope.getTicketCustomField = function (ticket, fieldId) {
-        console.log(ticket);
         if (ticket.category && ticket.category.id) {
-
             return ticket.category.id;
         }
 
