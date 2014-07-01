@@ -67,9 +67,9 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		var testing = 18;
 		var ready = 10;
 
-        //Неназначенные
+        //Неназначенные и низкоприоритетные
 		$scope.noDev = function (ticket) {
-            return (!ticket.assigned_to || !ticket.assigned_to.id)
+            return (!ticket.assigned_to || !ticket.assigned_to.id || (!ticket.priority || ticket.priority.id < 4))
         }
 
         //Дизайн
@@ -83,6 +83,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
                  && (!ticket.category || ticket.category.id != otherCategory)
                  && (ticket.status.id === activeStatus || ticket.status.id === suspendedStatus)
                  && (ticket.tracker && ticket.tracker.id != designTracker)
+                 && (ticket.priority && ticket.priority.id >= 4)
         }
 
         //Назначенные и в работе
