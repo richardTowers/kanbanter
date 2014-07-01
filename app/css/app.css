@@ -157,8 +157,8 @@ div.ticketProgressBar {
 }
 
 .unit12, .unit12 p.issueNumber {
-    background: #b57bc6;
-    border-bottom-color:#7e3c91;
+    background: #111;
+    border-bottom-color:#000;
 }
 
 .unit18, .unit18 p.issueNumber {
@@ -167,8 +167,8 @@ div.ticketProgressBar {
 }
 
 .unit14, .unit14 p.issueNumber {
-    background: #0063a2;
-    border-bottom-color:#094a74;
+    background: #b57bc6;
+    border-bottom-color:#7e3c91;
 }
 
 .unit15, .unit15 p.issueNumber  {
