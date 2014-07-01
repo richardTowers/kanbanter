@@ -60,6 +60,8 @@ function KanbanController($scope, $http, $rootScope, $location) {
                         Math.min(100,
                             Math.floor((new Date() - new Date(data.issues[i].start_date )) / 1000 / 60 / 60 / 24 / 2 * 100)
                         );
+                } else {
+                    data.issues[i].ratio = 0;
                 }
             }
             $scope.issues = data.issues;
