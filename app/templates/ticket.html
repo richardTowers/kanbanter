@@ -4,8 +4,8 @@
             <a href="https://tasks.verumnets.ru/issues/{{issue.id}}" target="_blank">#{{issue.id}}</a>
         </p>
 		<p class="subject">{{issue.subject}}</p>
-	<div class="ticketProgressBarContainer">
+	<div ng-if="issue.ratio" class="ticketProgressBarContainer">
         <!--<div class="ticketProgressBar" style="width:{{issue.doe_ratio}}%;"></div>-->
-            <div class="ticketProgressBar ratio{{issue.ratio}}" style="width:{{issue.ratio}}%;"></div>
+        <div class="ticketProgressBar" style="width:{{issue.ratio}}%;"></div>
     </div>
 </div>
