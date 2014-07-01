@@ -57,9 +57,6 @@ function KanbanController($scope, $http, $rootScope, $location) {
 
 	// Set up filters:
 	(function () {
-
-        var without
-		var backlog = 4;
 		var currentUser = $rootScope.user.id;
 		var activeStatus = 1;
 		var suspendedStatus = 11;
@@ -85,12 +82,14 @@ function KanbanController($scope, $http, $rootScope, $location) {
             return ticket.assigned_to && ticket.assigned_to.id
                  && (!ticket.category || ticket.category.id != otherCategory)
                  && (ticket.status.id === activeStatus || ticket.status.id === suspendedStatus)
+                 && (ticket.tracker && ticket.tracker.id != designTracker)
         }
 
         //Назначенные и в работе
 		$scope.inProgress = function (ticket) {
             return ticket.assigned_to && ticket.assigned_to.id
-                 && ticket.status.id === inProgress;
+                 && ticket.status.id === inProgress
+                 && (ticket.tracker && ticket.tracker.id != designTracker)
         }
 
         //Тестируются
@@ -98,8 +97,10 @@ function KanbanController($scope, $http, $rootScope, $location) {
             return ticket.status.id == readyForTesting || ticket.status.id == testing;
         }
 
-        //Выложенны
+        //Выложенны и ожидют анализа
 		$scope.waitingReview = function (ticket)       { return ticket.status.id == ready; }
+
+
 	})();
 	
 	// Return ticket custom field value
