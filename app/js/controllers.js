@@ -57,37 +57,49 @@ function KanbanController($scope, $http, $rootScope, $location) {
 
 	// Set up filters:
 	(function () {
+
+        var without
 		var backlog = 4;
 		var currentUser = $rootScope.user.id;
-		var active = 1;
+		var activeStatus = 1;
+		var suspendedStatus = 11;
+        var otherCategory = 16;
+        var designTracker = 6;
 		var inProgress = 2;
 		var readyForTesting = 17;
 		var testing = 18;
 		var ready = 10;
 
-        //Неназначенные и обратная связь
-		$scope.backlog = function (ticket)         { return (!ticket.assigned_to || !ticket.assigned_to.id)
-                                                        && ticket.status.id === backlog; }
+        //Неназначенные
+		$scope.noDev = function (ticket) {
+            return (!ticket.assigned_to || !ticket.assigned_to.id)
+        }
 
-        //Неназначенные и новые или отложено
-        $scope.inProgress = function (ticket)      { return (!ticket.assigned_to || !ticket.assigned_to.id)
-                                                                && (ticket.status.id === active || ticket.status.id === 11) }
+        //Дизайн
+        $scope.design = function (ticket){
+            return (ticket.tracker && ticket.tracker.id == designTracker)
+        }
+
         //Назначенные и в новые
-		$scope.developmentDone = function (ticket) {
+		$scope.developmentReady = function (ticket) {
             return ticket.assigned_to && ticket.assigned_to.id
-                 && (!ticket.category || ticket.category.id != 16)
-                 && (ticket.status.id === active || ticket.status.id === 11)
+                 && (!ticket.category || ticket.category.id != otherCategory)
+                 && (ticket.status.id === activeStatus || ticket.status.id === suspendedStatus)
         }
 
         //Назначенные и в работе
-		$scope.review = function (ticket)          { return ticket.assigned_to && ticket.assigned_to.id
-                                                                            && ticket.status.id === inProgress; }
+		$scope.inProgress = function (ticket) {
+            return ticket.assigned_to && ticket.assigned_to.id
+                 && ticket.status.id === inProgress;
+        }
 
         //Тестируются
-		$scope.reviewDone = function (ticket)      { return ticket.status.id == readyForTesting || ticket.status.id == testing; }
+		$scope.inTesting = function (ticket)      {
+            return ticket.status.id == readyForTesting || ticket.status.id == testing;
+        }
 
         //Выложенны
-		$scope.inTesting = function (ticket)       { return ticket.status.id == ready; }
+		$scope.waitingReview = function (ticket)       { return ticket.status.id == ready; }
 	})();
 	
 	// Return ticket custom field value
