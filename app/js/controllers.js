@@ -15,11 +15,9 @@ function LoginController($scope, $http, $rootScope, $location) {
 	};
 
 	$scope.login = function login () {
-
         jQuery.getJSON(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode + "&callback=?", function(data){
             handleSuccessfulLogin(data.user);
         });
-
 	};
 
 	// We might have to auto-login
@@ -51,23 +49,35 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		return;
 	}
 
-	// Try and use the user's apiCode to get the issues:
-    jQuery.getJSON(redmineBaseUrl + 'issues.json?sort=priority:desc,created_on:desc&limit=100&project_id=29&status_id=!5&key=' + $rootScope.user.apiCode + "&callback=?",
-        function (data) {
-            for (var i in data.issues) {
-                if (data.issues[i].status.id == 2) {
-                    data.issues[i].ratio =
-                        Math.min(100,
-                            Math.floor((new Date() - new Date(data.issues[i].start_date )) / 1000 / 60 / 60 / 24 / 2 * 100)
-                        );
-                } else {
-                    data.issues[i].ratio = 0;
+    function getData() {
+
+        // Try and use the user's apiCode to get the issues:
+        jQuery.getJSON(redmineBaseUrl + 'issues.json?sort=priority:desc,created_on:desc&limit=100&project_id=29&status_id=!5&key=' + $rootScope.user.apiCode + "&callback=?",
+            function (data) {
+                for (var i in data.issues) {
+                    if (data.issues[i].status.id == 2) {
+                        data.issues[i].ratio =
+                            Math.min(100,
+                                Math.floor((new Date() - new Date(data.issues[i].start_date )) / 1000 / 60 / 60 / 24 / 2 * 100)
+                            );
+                    } else {
+                        data.issues[i].ratio = 0;
+                    }
                 }
+                $scope.issues = data.issues;
+                $scope.$apply();
             }
-            $scope.issues = data.issues;
-            $scope.$apply();
-        }
-    );
+        );
+    }
+
+    getData();
+
+    setTimer(function(){
+        getData();
+    }, 30000);
+
+
+
 
 	// Set up filters:
 	(function () {
