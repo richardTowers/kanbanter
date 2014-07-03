@@ -208,3 +208,9 @@ div.ticketProgressBarContainer.ratio0 {
     background: #e1818b;
     border-bottom-color:#ba737a;
 }
+
+.last-update {
+    padding-left: 10px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
