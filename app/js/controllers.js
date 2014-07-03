@@ -66,7 +66,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
                 }
                 $scope.issues = data.issues;
                 $scope.$apply();
-                $(".last-update").text("Последение обновление в " + new Date());
+                $(".last-update").text("Последнее обновление в " + new Date());
             }
         );
     }
