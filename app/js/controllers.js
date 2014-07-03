@@ -73,7 +73,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
 
     getData();
 
-    setTimer(function(){
+    setInterval(function(){
         getData();
     }, 30000);
 
