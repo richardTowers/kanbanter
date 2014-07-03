@@ -215,4 +215,6 @@ div.ticketProgressBarContainer.ratio0 {
     margin-bottom: 5px;
     position: fixed;
     bottom: 0;
+    background: #fff;
+    padding: 1px;
 }
