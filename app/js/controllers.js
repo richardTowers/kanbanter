@@ -88,13 +88,15 @@ function KanbanController($scope, $http, $rootScope, $location) {
         var otherCategory = 16;
         var designTracker = 6;
 		var inProgress = 2;
+		var returnedToDevel = 22;
 		var readyForTesting = 17;
 		var testing = 18;
 		var ready = 10;
 
         //Неназначенные и низкоприоритетные
 		$scope.noDev = function (ticket) {
-            return (!ticket.assigned_to || !ticket.assigned_to.id || (!ticket.priority || ticket.priority.id < 4))
+            return (!ticket.assigned_to || !ticket.assigned_to.id || (!ticket.priority || ticket.priority.id < 4
+                || ticket.priority.id == 21 || ticket.priority.id == 29))
         }
 
         //Дизайн
@@ -109,12 +111,14 @@ function KanbanController($scope, $http, $rootScope, $location) {
                  && (ticket.status.id === activeStatus || ticket.status.id === suspendedStatus)
                  && (ticket.tracker && ticket.tracker.id != designTracker)
                  && (ticket.priority && ticket.priority.id >= 4)
+                 && (ticket.priority && ticket.priority.id != 21)
+                 && (ticket.priority && ticket.priority.id != 29)
         }
 
         //Назначенные и в работе
 		$scope.inProgress = function (ticket) {
             return ticket.assigned_to && ticket.assigned_to.id
-                 && ticket.status.id === inProgress
+                 && (ticket.status.id === inProgress || ticket.status.id == returnedToDevel)
                  && (ticket.tracker && ticket.tracker.id != designTracker)
         }
 
