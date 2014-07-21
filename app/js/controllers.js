@@ -52,7 +52,7 @@ function KanbanController($scope, $http, $rootScope, $location) {
     function getData() {
 
         // Try and use the user's apiCode to get the issues:
-        jQuery.getJSON(redmineBaseUrl + 'issues.json?sort=priority:desc,created_on:desc&limit=100&project_id=29&status_id=!5&key=' + $rootScope.user.apiCode + "&callback=?",
+        jQuery.getJSON(redmineBaseUrl + 'issues.json?sort=priority:desc,created_on:desc&limit=300&project_id=29&status_id=!5&key=' + $rootScope.user.apiCode + "&callback=?",
             function (data) {
                 for (var i in data.issues) {
                     if (data.issues[i].status.id == 2) {
