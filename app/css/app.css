@@ -22,7 +22,37 @@ body {
   min-height: 600px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
+  width:218px;
+  margin-left: 20px;
 }
+
+/*.small-column {
+    width:150px
+}
+
+.small-column h4 {
+    font-size: 20px;
+}
+
+.big-column {
+    font-size: ;
+}*/
+
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    /* Retina-specific stuff here */
+
+    .column {
+        width:190px;
+    }
+
+    .column h4 {
+        font-size: 19px;
+    }
+}
+
+
 
 div.clear {
   clear: both;
@@ -32,7 +62,7 @@ div.clear {
   background: #F0D878;
   color: #fff;
   padding: 5px;
-  margin: 20px -8px 20px 8px;
+  margin: 14px -8px 14px 8px;
   border-bottom: 1px solid #CBB768;
 }
 
@@ -58,7 +88,7 @@ span.estimatedHours abbr {
 .ticket p.issueNumber a {
   display: block;
   color: #fff;
-  font-size: 24px;
+  font-size: 14px;
 }
 
 .ticket p.issueNumber a:hover {
@@ -74,6 +104,10 @@ div.ticketProgressBar {
   background: #A1BEE6;
   height: 3px;
   border-bottom: 1px solid #5CB2C3;
+}
+
+div.ticketProgressBarContainer.ratio0 {
+    display: none;
 }
 
 .ticket.unitScotland {
@@ -119,6 +153,8 @@ div.ticketProgressBar {
 .subject {
   font-size: 12px;
   overflow: hidden;
+  max-height: 43px;
+  margin-bottom: 3px;
 }
 
 .jqui-dnd-target-over {
@@ -132,8 +168,55 @@ div.ticketProgressBar {
 .jqui-dnd-item-over {
 }
 
+.fullscreen {
+    padding-top: 7px;
+}
 
+.fullscreen .navbar {
+    display: none;
+}
 
 .controls button {
   margin: 5px;
+}
+
+.unit12, .unit12 p.issueNumber {
+    background: #555;
+    border-bottom-color:#000;
+}
+
+.unit18, .unit18 p.issueNumber {
+    background:#70c17a;
+    border-bottom-color:#3e7144;
+}
+
+.unit14, .unit14 p.issueNumber {
+    background: #b57bc6;
+    border-bottom-color:#7e3c91;
+}
+
+.unit15, .unit15 p.issueNumber  {
+    background: #f78512;
+    border-bottom-color: #b96f25;
+}
+
+.unit13, .unit13 p.issueNumber {
+    background: #6a9fd0;
+    border-bottom-color:#113b62;
+}
+
+.unit17, .unit17 p.issueNumber {
+    background: #e1818b;
+    border-bottom-color:#ba737a;
+}
+
+.last-update {
+    padding-left: 10px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    padding: 1px;
+    z-index:10;
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-var redmineBaseUrl = 'http://redmine.richard-towers.com/';
+var redmineBaseUrl = 'https://tasks.verumnets.ru/';
 
 function LoginController($scope, $http, $rootScope, $location) {
 
@@ -15,10 +15,9 @@ function LoginController($scope, $http, $rootScope, $location) {
 	};
 
 	$scope.login = function login () {
-		// Make a get with the api code in the box to see if it's correct:
-		$http.get(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode)
-			.success(function (data) { handleSuccessfulLogin(data.user); })
-			.error(function () { alert('Oops! Something went wrong.'); });
+        jQuery.getJSON(redmineBaseUrl + 'users/current.json?key=' + $scope.apiCode + "&callback=?", function(data){
+            handleSuccessfulLogin(data.user);
+        });
 	};
 
 	// We might have to auto-login
@@ -27,9 +26,14 @@ function LoginController($scope, $http, $rootScope, $location) {
 		return;
 	}
 }
+
 LoginController.$inject = ['$scope', '$http', '$rootScope', '$location'];
 
 function KanbanController($scope, $http, $rootScope, $location) {
+
+    document.addEventListener("webkitfullscreenchange", function () {
+        $("body").toggleClass("fullscreen");
+    }, false);
 
 	var handleLogout = function handleLogout () {
 		$rootScope.user = undefined;
@@ -45,38 +49,103 @@ function KanbanController($scope, $http, $rootScope, $location) {
 		return;
 	}
 
-	// Try and use the user's apiCode to get the issues:
-	$http.get(redmineBaseUrl + 'issues.json?status_id=*&key=' + $rootScope.user.apiCode)
-		.success(function (data) { $scope.issues = data.issues; })
-		.error(function () { alert('Oh no.'); });
+    function getData() {
+
+        // Try and use the user's apiCode to get the issues:
+        jQuery.getJSON(redmineBaseUrl + 'issues.json?sort=priority:desc,created_on:desc&limit=300&project_id=29&status_id=!5&key=' + $rootScope.user.apiCode + "&callback=?",
+            function (data) {
+                for (var i in data.issues) {
+                    if (data.issues[i].status.id == 2) {
+                        data.issues[i].ratio =
+                            Math.min(100,
+                                Math.floor((new Date() - new Date(data.issues[i].start_date )) / 1000 / 60 / 60 / 24 / 2 * 100)
+                            );
+                    } else {
+                        data.issues[i].ratio = 0;
+                    }
+                }
+                $scope.issues = data.issues;
+                $scope.$apply();
+                $(".last-update").text("Последнее обновление в " + (new Date()).toLocaleString());
+            }
+        );
+    }
+
+    getData();
+
+    setInterval(function(){
+        getData();
+    }, 30000);
+
+
+
 
 	// Set up filters:
 	(function () {
-		var unassigned = 9;
 		var currentUser = $rootScope.user.id;
-		var active = 1;
-		var review = 7;
-		var resolved = 3;
-		var closed = 5;
-		$scope.backlog = function (ticket)         { return ticket.assigned_to.id === unassigned && ticket.status.id === active; }
-		$scope.inProgress = function (ticket)      { return ticket.assigned_to.id !== unassigned && ticket.status.id === active; }
-		$scope.developmentDone = function (ticket) { return ticket.assigned_to.id === unassigned && ticket.status.id === review; }
-		$scope.review = function (ticket)          { return ticket.assigned_to.id !== unassigned && ticket.status.id === review; }
-		$scope.reviewDone = function (ticket)      { return ticket.assigned_to.id === unassigned && ticket.status.id === resolved; }
-		$scope.inTesting = function (ticket)       { return ticket.assigned_to.id !== unassigned && ticket.status.id === resolved; }
+		var activeStatus = 1;
+		var suspendedStatus = 11;
+        var otherCategory = 16;
+        var designTracker = 6;
+		var inProgress = 2;
+		var returnedToDevel = 22;
+		var readyForTesting = 17;
+		var testing = 18;
+		var ready = 10;
+
+        //Неназначенные и низкоприоритетные
+		$scope.noDev = function (ticket) {
+            return (!ticket.assigned_to || !ticket.assigned_to.id || (!ticket.priority || ticket.priority.id < 4
+                || ticket.priority.id == 21 || ticket.priority.id == 22))
+        }
+
+        //Дизайн
+        $scope.design = function (ticket){
+            return (ticket.tracker && ticket.tracker.id == designTracker)
+        }
+
+        //Назначенные и в новые
+		$scope.developmentReady = function (ticket) {
+            return ticket.assigned_to && ticket.assigned_to.id
+                 && (!ticket.category || ticket.category.id != otherCategory)
+                 && (ticket.status.id === activeStatus || ticket.status.id === suspendedStatus)
+                 && (ticket.tracker && ticket.tracker.id != designTracker)
+                 && (ticket.priority && ticket.priority.id >= 4)
+                 && (ticket.priority && ticket.priority.id != 21)
+                 && (ticket.priority && ticket.priority.id != 22)
+        }
+
+        //Назначенные и в работе
+		$scope.inProgress = function (ticket) {
+            return ticket.assigned_to && ticket.assigned_to.id
+                 && (ticket.status.id === inProgress || ticket.status.id == returnedToDevel)
+                 && (ticket.tracker && ticket.tracker.id != designTracker)
+        }
+
+        //Тестируются
+		$scope.inTesting = function (ticket)      {
+            return ticket.status.id == readyForTesting || ticket.status.id == testing;
+        }
+
+        //Выложенны и ожидют анализа
+		$scope.waitingReview = function (ticket)       { return ticket.status.id == ready; }
+
+
 	})();
 	
 	// Return ticket custom field value
 	$scope.getTicketCustomField = function (ticket, fieldId) {
-		
-		for (var i = 0; i < ticket.custom_fields.length; i++) {
-			if(ticket.custom_fields[i].id===Number(fieldId)) { return ticket.custom_fields[i].value; }
-		}
-		
-		// Custom field not found
+        if (ticket.category && ticket.category.id) {
+            return ticket.category.id;
+        }
+
 		return null;
-		
 	}
+
+
+    $scope.handleDrop = function(elementScope, scope) {
+        console.log(elementScope, scope);
+    };
 
 	$scope.logout = handleLogout;
 }
